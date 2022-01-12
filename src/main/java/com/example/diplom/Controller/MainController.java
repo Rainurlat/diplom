@@ -12,5 +12,10 @@ public class MainController {
         model.addAttribute("title", "Главная страница");
         return "home";
     }
+    @GetMapping("/signup")
+    public String signUP(Model model) {
+        model.addAttribute("title", "Регистарция");
+        return "signup";
+    }
 
 }
