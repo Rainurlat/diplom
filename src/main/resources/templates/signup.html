@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
@@ -91,7 +91,8 @@
             <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
                 <div class="">
                     <h2 class="mb-3 font-weight-light">Регистрация ученика</h2>
-                    <form class="mt-3">
+                    <form method="post" action="/register"  class="mt-3" th:object="${registerRequest}">
+<!--                        -->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
@@ -100,7 +101,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="email" placeholder="E-mail адресс">
+                                    <input class="form-control" type="login" placeholder="E-mail адресс">
                                 </div>
                             </div>
                             <div class="col-lg-6">
