@@ -5,6 +5,7 @@ import com.example.diplom.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class UserService {
 
@@ -31,4 +32,12 @@ public class UserService {
     public UsersModel authenticate(String login, String password){
         return userRepository.findByLoginAndPassword(login, password).orElse(null);
     }
+
+//    public List<User> allUsers() {
+//        return userRepository.findAll();
+//    }
+//    public List<UserModel> usergtList(Long idMin) {
+//        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
+//                .setParameter("paramId", idMin).getResultList();
+//    }
 }
