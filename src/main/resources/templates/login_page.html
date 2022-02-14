@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <meta charset="UTF-8">
-    <title>Регистрация</title>
+    <title>Авторизация</title>
 </head>
 <body>
 
@@ -90,13 +90,12 @@
         <div class="container">
             <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
                 <div class="">
-                    <h2 class="mb-3 font-weight-light">Регистрация ученика</h2>
+                    <h2 class="mb-3 font-weight-light">Авторизация</h2>
                     <form method="post" action="/login"  class="mt-3" th:object="${loginRequest}">
-                        <!--                        -->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="login" type="text" placeholder="Ваше имя">
+                                    <input class="form-control" name="login" type="text" placeholder="Введите логин">
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -111,14 +110,14 @@
 
                             </div>
                             <div class="col-lg-12">
-                                <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span>Создать аккаунт</span></button>
+                                <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span>Войти</span></button>
                                 <!-- -->
                             </div>
                         </div>
                     </form>
                     <div class="row">
                         <div class="col-lg-12 text-center mt-4">
-                            У вас уже есть аккаунт ученика? <a href="/" class="text-danger">Авторизация</a>
+                            Если у вас нет аккаунта <a href="/register" class="text-danger">Регистрация</a>
                         </div>
                     </div>
                 </div>

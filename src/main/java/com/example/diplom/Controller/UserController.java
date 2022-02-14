@@ -19,6 +19,13 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("title", "Главная страница");
+        return "home";
+    }
+
+
     @GetMapping("/register")
     public String getRegisterPage(Model model){
         model.addAttribute("registerRequest", new UsersModel());
