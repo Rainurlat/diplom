@@ -22,7 +22,7 @@ public class UserController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("title", "Главная страница");
-        return "home";
+        return "register";
     }
 
 
@@ -47,6 +47,14 @@ public class UserController {
         System.out.println("register request " + usersModel + usersModel.getLogin()+ usersModel.getPassword());
        return registeredUser==null? "error_page" : "redirect:/login";
     }
+
+//    @PostMapping("/login")
+//    public String login(@ModelAttribute UsersModel usersModel){
+//
+//        UsersModel authenticated=userService.authenticate(usersModel.getLogin(), usersModel.getPassword());
+//        System.out.println("login request " + usersModel + usersModel.getLogin()+ usersModel.getPassword());
+//        return authenticated==null? "error_page" : "redirect:/home";
+//    }
 
     @PostMapping("/login")
     public String login(@ModelAttribute UsersModel usersModel, Model model){

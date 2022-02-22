@@ -9,11 +9,13 @@ import java.util.Objects;
 public class UsersModel {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        Integer id;
+        private  Integer id;
 
-        String login;
+    private  String login;
 
-        String password;
+    private  String password;
+
+
 
     public Integer getId() {
         return id;
@@ -27,6 +29,7 @@ public class UsersModel {
         return login;
     }
 
+
     public void setLogin(String login) {
         this.login = login;
     }
@@ -38,6 +41,7 @@ public class UsersModel {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -59,6 +63,8 @@ public class UsersModel {
                 ", login='" + login + '\'' +
                 '}';
     }
+
+
 
 
 }
