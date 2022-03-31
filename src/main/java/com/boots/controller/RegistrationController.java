@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
@@ -22,6 +23,16 @@ public class RegistrationController {
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
 
+        return "registration";
+    }
+
+    @RequestMapping("/q")
+    public String home(){
+        return "q";
+    }
+
+    @RequestMapping("/registration")
+    public String registration(){
         return "registration";
     }
 
@@ -39,7 +50,7 @@ public class RegistrationController {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "registration";
         }
-
-        return "redirect:/";
+        System.out.println("register request " + userForm + userForm.getUsername()+ userForm.getPassword());
+        return "redirect:/q";
     }
 }

@@ -10,9 +10,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.awt.event.ItemEvent;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -24,9 +32,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    RoleRepository roleRepository;
-    @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,6 +46,8 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+
+
     public User findUserById(Long userId) {
         Optional<User> userFromDb = userRepository.findById(userId);
         return userFromDb.orElse(new User());
@@ -48,6 +57,8 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
+
+
     public boolean saveUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
 
@@ -55,11 +66,25 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+//разобраться с чекбоксом блин
+
+
+//                if( req.getParameter("rolling") == ItemEvent.SELECTED) {//checkbox has been selected
+//                    user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
+//                } else {//checkbox has been deselected
+//                    user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+//                };
+
+      user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+      //  user.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }
+
+
+
+
 
     public boolean deleteUser(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
