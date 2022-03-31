@@ -1,30 +1,134 @@
-<!--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>-->
-<!--<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
 
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--  <meta charset="utf-8">-->
-<!--  <title>Log in with your account</title>-->
-<!--</head>-->
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+</head>
+<body>
 
-<!--<body>-->
-<!--<sec:authorize access="isAuthenticated()">-->
-<!--  <% response.sendRedirect("/"); %>-->
-<!--</sec:authorize>-->
-<!--<div>-->
-<!--  <form method="POST" action="/login">-->
-<!--    <h2>Вход в систему</h2>-->
-<!--    <div>-->
-<!--      <input name="username" type="text" placeholder="Username"-->
-<!--             autofocus="true"/>-->
-<!--      <input name="password" type="password" placeholder="Password"/>-->
-<!--      <button type="submit">Log In</button>-->
-<!--      <h4><a href="/registration">Зарегистрироваться</a></h4>-->
-<!--    </div>-->
-<!--  </form>-->
-<!--</div>-->
+<style>
+    @import url(//fonts.googleapis.com/css?family=Montserrat:300,400,500);
+    .bform {
+        font-family: "Montserrat", sans-serif;
+        color: #8d97ad;
+        font-weight: 300;
+        overflow: hidden;
+        position: relative;
+    }
 
-<!--</body>-->
-<!--</html>-->
-qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+    .bform h1,
+    .bform h2,
+    .bform h3,
+    .bform h4,
+    .bform h5,
+    .bform h6 {
+        color: #3e4555;
+    }
+
+    .bform .subtitle {
+        color: #8d97ad;
+        line-height: 24px;
+    }
+
+    .bform a {
+        text-decoration: none;
+    }
+
+    .bform .btn-danger-gradiant {
+        background: #ff4d7e;
+        background: -webkit-linear-gradient(legacy-direction(to right), #ff4d7e 0%, #ff6a5b 100%);
+        background: -webkit-gradient(linear, left top, right top, from(#ff4d7e), to(#ff6a5b));
+        background: -webkit-linear-gradient(left, #ff4d7e 0%, #ff6a5b 100%);
+        background: -o-linear-gradient(left, #ff4d7e 0%, #ff6a5b 100%);
+        background: linear-gradient(to right, #ff4d7e 0%, #ff6a5b 100%);
+    }
+
+    .bform .btn-danger-gradiant:hover {
+        background: #ff6a5b;
+        background: -webkit-linear-gradient(legacy-direction(to right), #ff6a5b 0%, #ff4d7e 100%);
+        background: -webkit-gradient(linear, left top, right top, from(#ff6a5b), to(#ff4d7e));
+        background: -webkit-linear-gradient(left, #ff6a5b 0%, #ff4d7e 100%);
+        background: -o-linear-gradient(left, #ff6a5b 0%, #ff4d7e 100%);
+        background: linear-gradient(to right, #ff6a5b 0%, #ff4d7e 100%);
+    }
+
+    .bform .btn-md {
+        padding: 15px 45px;
+        font-size: 16px;
+    }
+
+
+
+    .bform .text-danger {
+        color: #ff4d7e !important;
+    }
+
+
+
+    @media (max-width: 1023px) {
+        .bform .contact-form {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .bform .contact-form {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+
+</style>
+
+<sec:authorize access="isAuthenticated()">
+  <% response.sendRedirect("/"); %>
+</sec:authorize>
+<div class="bform py-5">
+    <!-- Row -->
+    <div class="row">
+        <div class="container">
+            <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
+                <div class="">
+                    <h2 class="mb-3 font-weight-light">Авторизация</h2>
+                    <form method="post" action="/login"  class="mt-3" th:object="${loginRequest}">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="login" type="text" placeholder="Введите логин">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control" name="password" type="password" placeholder="Введите пароль">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span>Войти</span></button>
+                                <!-- -->
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-lg-12 text-center mt-4">
+                            Если у вас нет аккаунта <a href="/register" class="text-danger">Регистрация</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 right-image pl-3">
+        </div>
+    </div>
+</div>
+</body>
+</html>

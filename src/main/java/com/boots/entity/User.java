@@ -86,10 +86,6 @@ public class User implements UserDetails {
         this.passwordConfirm = passwordConfirm;
     }
 
-
-
-
-
     public Set<Role> getRoles() {
         return roles;
     }
