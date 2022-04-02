@@ -11,16 +11,23 @@
 </head>
 <body>
 <div>
-  <h3>${pageContext.request.userPrincipal.name}</h3>
   <sec:authorize access="!isAuthenticated()">
+    <h3>Чтобы видеть материалы курса, нужно авторизоваться:</h3>
     <h4><a href="/login">Войти</a></h4>
     <h4><a href="/registration">Зарегистрироваться</a></h4>
   </sec:authorize>
   <sec:authorize access="isAuthenticated()">
-    <h4><a href="/logout">Выйти</a></h4>
+  <p>Привет, ${pageContext.request.userPrincipal.name}</p>
+    <div class="navbar">
+        <ul>
+             <li><a href="/logout">Выйти</a></li>
+             <li> <a href="/news">Тесты</a> </li>
+             <li> <a href="/admin">Для преподавателя</a></li>
+        </ul>
+    </div>
+
   </sec:authorize>
-  <h4><a href="/news">Новости (только пользователь)</a></h4>
-  <h4><a href="/admin">Пользователи (только админ)</a></h4>
+
 </div>
 </body>
 </html>

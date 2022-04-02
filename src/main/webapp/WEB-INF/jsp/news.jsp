@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Новости</title>
+    <title>Тесты</title>
 </head>
 <body>
 <div>
